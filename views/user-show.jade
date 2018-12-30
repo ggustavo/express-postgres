@@ -1,0 +1,29 @@
+doctype html
+html
+    head
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+        link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    body
+        include ./nav.jade
+        .container.center-align
+            h2 user
+        .container
+            h5
+                a(href='./0') + add new
+            table
+                thead
+                    tr
+                        th id
+                        th name
+                        th email
+                        th password
+                tbody
+                    - for(let i=0; i < user.length; i++)
+                        tr
+                            td #{user[i]['id']}
+                            td #{user[i]['name']}
+                            td #{user[i]['email']}
+                            td #{user[i]['password']}
+                            td
+                                a(href = './'+user[i]['id']) edit

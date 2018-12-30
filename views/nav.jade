@@ -1,0 +1,14 @@
+nav
+    .nav-wrapper.black
+        a.sidenav-trigger.show-on-large(href='#!', data-target='mobile-demo')
+            i.material-icons menu
+        a.brand-logo(href='#!') express-postgres
+        ul#mobile-demo.sidenav
+            li
+                a(href='/user/', target='_blank') /user
+script(type='text/javascript', src='/js/materialize.js')
+script(type='text/javascript').
+    let sidenavs = document.querySelectorAll('.sidenav');
+    for (let i = 0; i < sidenavs.length; i++){
+        M.Sidenav.init(sidenavs[i]);
+    }

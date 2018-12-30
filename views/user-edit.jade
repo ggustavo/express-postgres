@@ -1,0 +1,38 @@
+doctype html
+html
+    head
+        link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+        link(type='text/css', rel='stylesheet', href='/css/materialize.css', media='screen,projection')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    body
+        include ./nav.jade
+        .container.center-align
+            - var _action = './';
+            - if (user.length > 0){
+                - _action = './upd/'+user[0]["id"];
+                h4 Edit user
+            - }else{
+                - user.push({"id":null,"name":null,"email":null,"password":null});
+                h4  New user
+            - }
+        .container
+            form(name='form', method= 'POST', action = _action)
+                .row
+                label id
+                input(type='text', name='id', value= user[0]["id"])
+                .row
+                label name
+                input(type='text', name='name', value= user[0]["name"])
+                .row
+                label email
+                input(type='text', name='email', value= user[0]["email"])
+                .row
+                label password
+                input(type='text', name='password', value= user[0]["password"])
+                button.btn.waves-effect.waves-light.black(type='submit', name='action') Save
+                    i.material-icons.right send
+            - if(_action != './')
+                .row
+                form(method='GET', action='./del/'+user[0]["id"])
+                    button.btn.waves-effect.waves-light.black(type='submit') Delete
+                        i.material-icons.right delete
